@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="row justify-content-center mt-5">
+            <h2 class="text-center">Backoffice base application</h2>
+            <h3 class="text-center">Features:</h3>
+</div>
+        <div class="container mt-3">
+            <div class="row justify-content-center">
+                <div class="card text-white bg-success mb-3 mx-2" style="max-width: 18rem;">
+                    <div class="card-header">User</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Session and User features</h5>
+                        <p class="card-text">
+                            User authentication<br>
+                            Role-based authorization<br>
+                            Idle session logout<br>
+                            User CRUD
+                        </p>
+                    </div>
+                </div>
+                <div class="card text-white bg-primary mb-3 mx-2" style="max-width: 18rem;">
+                    <div class="card-header">Templating</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Templates and UI features</h5>
+                        <p class="card-text">
+                            Top navbar<br>
+                            Collapsable Sidebar Menu<br>
+                            Custom error pages<br>
+                            Responsive design
+                        </p>
+                    </div>
+                </div>
+                <div class="card text-dark bg-warning mb-3 mx-2" style="max-width: 18rem;">
+                    <div class="card-header">Backend</div>
+                    <div class="card-body">
+                        <h5 class="card-title">Ready to work and add functionality</h5>
+                        <p class="card-text">
+                            Configured for MySql DB<br>
+                            Folder structure ready<br>
+                            Simple MVC aquitecture<br>
+                            Symfony 5 implemented
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

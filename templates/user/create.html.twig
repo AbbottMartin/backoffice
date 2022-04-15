@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} 
+    {% if title is defined and title is not null %} {{ title }} {% endif %} 
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body p-4">
+                        <h2>{{ title }}</h2>
+                        {{ form_start(userCreateForm) }}
+                            <div class="alert-danger">
+                                {{ form_errors(userCreateForm) }}
+                            </div>
+
+                            <div class="mb-3">
+                                    {{ form_label(userCreateForm.username, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(userCreateForm.username, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="mb-3">
+                                    {{ form_label(userCreateForm.password, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(userCreateForm.password, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <div class="mb-3">
+                                    {{ form_label(userCreateForm.role, null, {'label_attr': {'class': 'form-label'}}) }}
+                                    {{ form_widget(userCreateForm.role, {'attr': {'class': 'form-select'}}) }}
+                            </div>
+                            <a href="{{ path('user_index') }}" class="btn btn-danger" >Cancel</a>
+                            {{ form_widget(userCreateForm.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                        {{ form_end(userCreateForm) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

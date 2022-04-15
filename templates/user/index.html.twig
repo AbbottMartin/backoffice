@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} 
+    {% if title is defined and title is not null %} {{ title }} {% endif %} 
+{% endblock %}
+
+{% block body %}
+    <h1>User List</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td scope="row">{{ user.id }}</td>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.roles|join('; ') }}</td>
+                        <td>
+                            <a class="btn btn-outline-info" href="{{ path('user_edit', {id: user.id}) }}">Edit</a>
+                            <button class="btn btn-outline-{% if user.enabled %}danger{% else %}success{% endif %}" 
+                                data-bs-toggle="modal" data-bs-target="#basicModal"
+                                modal-title="Update User"
+                                modal-body="Are you sure you want to {% if user.enabled %}Disable{% else %}Enable{% endif %} this user?"
+                                modal-confirm-path="{{ path('user_update_status', {id: user.id}) }}"
+                                href="#">
+                                
+                                {% if user.enabled %} Disable {% else %} Enable {% endif %}
+                            </button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="{{ path('user_create') }}" class="btn btn-primary" >Create User</a>
+    
+{% include "components/basicModal.html.twig" %}
+
+{% endblock %}

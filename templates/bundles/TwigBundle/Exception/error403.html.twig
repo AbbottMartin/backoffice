@@ -1,0 +1,14 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col justify-content-center">
+            <h2>Forbidden!</h2>
+            <p>
+                The access to the requested resource is denied. Check your credentials or <a href="{{ path('homepage') }}">return to the homepage</a>.
+            </p>
+        </div>
+    </div>
+    
+{% endblock %}

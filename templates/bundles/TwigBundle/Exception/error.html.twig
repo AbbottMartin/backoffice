@@ -1,0 +1,14 @@
+{# templates/bundles/TwigBundle/Exception/error.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col justify-content-center">
+            <h2>Error!</h2>
+            <p>
+                Something went wrong. <a href="{{ path('homepage') }}">Return to the homepage</a>.
+            </p>
+        </div>
+    </div>
+    
+{% endblock %}

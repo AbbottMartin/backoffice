@@ -1,0 +1,49 @@
+{# templates/login/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{# asi se agregan comentarios con twig #}
+
+{% block title %} 
+    {% if title is defined and title is not null %} {{ title }} {% endif %} 
+{% endblock %}
+{% block navbar %}
+    
+{% endblock %}
+
+{% block body %}
+        <div class="row justify-content-center mt-5">
+            <h2 class="text-center">Backoffice</h2>
+        </div>
+        <div class="container mt-3">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{ path('login') }}" method="post">
+                                <div class="mb-3">
+                                    <label class="form-label" for="username">Username</label>
+                                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input class="form-control" type="password" id="password" name="_password">
+                                </div>
+                                {% if error %}
+                                    <p class="text-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                                {% endif %}
+                                {# If you want to control the URL the user is redirected to on success
+                                <input type="hidden" name="_target_path" value="/account"/> #}
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                <div class="d-grid gap-2 col-4 mx-auto">
+                                    <button class="btn btn-primary" type="submit">Login</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

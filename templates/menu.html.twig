@@ -1,0 +1,26 @@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header bg-dark text-light">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+        <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body bg-dark">
+        <ul class="navbar-nav justify-content-start flex-grow-1 pe-3">
+            {% for menu_item in menu_items %}
+                {% if menu_item.items is defined and menu_item.items is not null %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{menu_item.name}}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="offcanvasNavbarDropdown">
+                            {% for item in menu_item.items %}
+                                <li><a class="dropdown-item" href="{{ path(item.path) }}">{{item.name}}</a></li>
+                            {% endfor %}
+                        </ul>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{{ path(menu_item.path) }}">{{menu_item.name}}</a>
+                {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
